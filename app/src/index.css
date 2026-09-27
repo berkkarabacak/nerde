@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    /* blue-600 #2563EB — the single brand accent (DESIGN_SYSTEM §2) */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 221 83% 53%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ---- Map markers (DESIGN_SYSTEM §5.2) ---- */
+
+/* Selected-marker ring: 2px white + outer 2px blue.
+   The single sanctioned piece of custom CSS from the design spec. */
+.marker-selected {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2563eb;
+}
+
+/* Near-me user dot: 16px blue dot + 32px pulsing disc (state feedback). */
+.nerde-user-dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #2563eb;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+}
+.nerde-user-dot::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: rgb(37 99 235 / 0.2);
+  animation: nerde-user-pulse 2s ease-out infinite;
+}
+@keyframes nerde-user-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nerde-user-dot::before {
+    animation: none;
+  }
+}
+
+/* Mini-map single marker (place page, add-wizard review). */
+.nerde-mini-marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+}
+
+/* MapLibre popup hosting the preview card: chrome-free wrapper. */
+.maplibregl-popup-content {
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.maplibregl-popup-tip {
+  border-top-color: #e5e5e5;
+}

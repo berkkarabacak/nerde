@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-09-19T12:02:57.292Z",
+  "finishedAt": "2026-09-19T12:04:14.261Z",
+  "dryRun": false,
+  "options": {
+    "cities": [
+      "new-york"
+    ],
+    "categories": [
+      "climbing"
+    ],
+    "maxPerCity": 2000,
+    "endpoints": [
+      "https://overpass.kumi.systems/api/interpreter"
+    ],
+    "sunsetFromViewpoints": false
+  },
+  "rows": [
+    {
+      "city": "new-york",
+      "categories": "climbing",
+      "fetched": 21,
+      "mapped": 21,
+      "inserted": 21,
+      "updated": 0,
+      "skipped": 0,
+      "capped": 0,
+      "errors": 0
+    }
+  ]
+}
